@@ -1,0 +1,53 @@
+---
+title: "Day 3 Activities"
+author: "Matteo Torres"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+# load packages
+library(tidyverse)
+library(here)
+library(janitor)
+```
+
+```{r}
+# read csv
+toolik_biochem <- read.csv(here::here("data", "2011_Kling_Akchem.csv"))
+```
+
+```{r}
+# lower snake case
+toolik_biochem <- janitor:: clean_names(toolik_biochem)
+```
+
+```{r}
+# filter data
+inlet_biochem <- toolik_biochem %>%
+  filter(site == "Toolik Inlet") %>%
+  select("p_h", "doc_u_m", "tdn_u_m")
+```
+
+```{r}
+# change from character to numeric
+inlet_biochem <- inlet_biochem %>%
+  mutate(across(everything(), as.numeric))
+```
+
+```{r}
+# means for each column
+for (i in 1:ncol(inlet_biochem)) {
+  mean_ph <- mean(inlet_biochem$p_h[i], na.rm= TRUE)
+}
+
+for (i in 1:ncol(inlet_biochem)) {
+  mean_doc <- mean(inlet_biochem$doc_u_m[i], na.rm= TRUE)
+}
+
+for (i in 1:ncol(inlet_biochem)) {
+  mean_tdn <- mean(inlet_biochem$tdn_u_m[i], na.rm= TRUE)
+}
+```
+

@@ -1,0 +1,66 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Conditional statements
+
+## Task 1
+```{r}
+pm2_5 <- 48
+
+if (pm2_5 < 100) {
+  print("low to moderate risk")
+} else if (pm2_5 >= 100 & pm2_5 < 150) {
+  print("unhealthy for sensitive groups")
+} else if (pm2_5 >= 150) {
+  print("health risk present")
+}
+```
+
+## Task 2
+```{r}
+species <- "blue whale"
+
+if (species == "blue whale") {
+  print("you found a whale!")
+} else {
+  print("nothing")
+}
+```
+
+## Task 3
+```{r}
+base_burrito <- 6.50
+
+main_ingredient<- "veggie"
+
+if (main_ingredient == "veggie") {
+  price <- base_burrito
+  print(price)
+} else if (main_ingredient == "chicken") {
+  price <- base_burrito + 3
+  print(price)
+} else if (main_ingredient == "steak") {
+  price <- base_burrito + 3.25
+  print(price)
+}
+```
+
+## Task 4
+```{r}
+fish <- c(8, 10, 12, 23)
+
+for (i in 1:length(fish)) {
+  total_fish <- fish[i]
+  print(total_fish)
+}
+```
+
+## Task 5
+```{r}
+for (i in 1:length(month.name)) {
+  print(paste(month.name[i], "is month", i))
+}
+```
+
